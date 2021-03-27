@@ -12,7 +12,96 @@ fn main() {
     // chapter3_5_2();
     // chapter3_5_3();
     // chapter3_5_4();
-    chapter3_5_5();
+    // chapter3_5_5();
+
+    // 结构体
+    // chapter5_1_1();
+    // chapter5_1_2();
+    // chapter5_2_1();
+    // chapter5_2_2();
+    chapter5_2_3();
+}
+
+fn chapter5_2_2() {
+    let r1 = Rectangle {
+        width: 6,
+        height: 6,
+    };
+
+    let r2 = Rectangle {
+        width: 5,
+        height: 5,
+    };
+
+    let result = r1.can_hold(&r2);
+    println!("r1 can_hold r2:{}", result);
+}
+
+fn chapter5_2_3(){
+    let result = Rectangle::new(10, 10);
+    println!("Rectangle new result: {:?}", result);
+    println!("Rectangle new result: {:#?}", result);
+
+    let aaa = Rectangle::area(&result);
+    println!("new result function area result: {}", aaa);
+}
+
+#[derive(Debug)]
+struct Rectangle {
+    width: i32,
+    height: i32,
+}
+
+impl Rectangle {
+    // 增加结构体的方法
+    fn area(&self) -> i32 {
+        self.width * self.height
+    }
+
+    fn can_hold(&self, other: &Rectangle) -> bool {
+        self.width > other.width && self.height > other.height
+    }
+
+    // 不加 self，静态函数 可以直接调用
+    fn new(width: i32, height: i32) -> Rectangle {
+        Rectangle {
+            width,
+            height,
+        }
+    }
+}
+
+// 调用结构体的方法
+fn chapter5_2_1() {
+    let data = Rectangle {
+        width: 100,
+        height: 100,
+    };
+    let result = data.area();
+    println!("result: {}", result);
+}
+
+// 打印结构体
+fn chapter5_1_2() {
+    let data = Rectangle {
+        width: 1000,
+        height: 1000,
+    };
+    println!("output format :? area is: {:?}", data);
+    println!("output format :#? area is: {:#?}", data);
+}
+
+fn chapter5_1_1() {
+    let rectangle = Rectangle {
+        width: 10,
+        height: 10,
+    };
+    let result = area(&rectangle);
+    println!("area is: {}", result);
+}
+
+fn area(rectangle: &Rectangle) -> i32 {
+    rectangle.width * rectangle.height
 }
 
 // for 循环
