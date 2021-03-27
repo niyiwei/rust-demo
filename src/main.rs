@@ -37,7 +37,7 @@ fn chapter5_2_2() {
     println!("r1 can_hold r2:{}", result);
 }
 
-fn chapter5_2_3(){
+fn chapter5_2_3() {
     let result = Rectangle::new(10, 10);
     println!("Rectangle new result: {:?}", result);
     println!("Rectangle new result: {:#?}", result);
