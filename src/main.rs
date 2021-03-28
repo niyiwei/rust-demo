@@ -19,7 +19,81 @@ fn main() {
     // chapter5_1_2();
     // chapter5_2_1();
     // chapter5_2_2();
-    chapter5_2_3();
+    // chapter5_2_3();
+    chapter6_1_1();
+    chapter6_1_2();
+    chapter6_1_3();
+    chapter6_1_4();
+}
+
+fn chapter6_1_4() {
+    let m = Message::Write(String::from("哇哈哈"));
+    m.call();
+}
+
+#[derive(Debug)]
+enum Message {
+    Quit,
+    Write(String),
+    ChangeColor(i32, i32, i32),
+}
+
+// 枚举实现方法
+impl Message {
+    fn call(&self) {
+        println!("message call:{:#?}", self);
+    }
+}
+
+fn chapter6_1_3() {
+    let v4 = IpAddrKind3::V4(127, 0, 0, 1);
+    let v6 = IpAddrKind3::V6(String::from("::1"));
+    println!("v4:{:#?}, v6:{:#?}", v4, v6);
+}
+
+fn chapter6_1_2() {
+    let v4 = IpAddrKind2::V4(String::from("127.0.0.1"));
+    let v6 = IpAddrKind2::V6(String::from("::1"));
+    println!("v4:{:#?}, v6:{:#?}", v4, v6);
+}
+
+fn chapter6_1_1() {
+    let home = IpAddr {
+        kind: IpAddrKind1::V4,
+        address: String::from("127.0.0.1"),
+    };
+
+    let loopback = IpAddr {
+        kind: IpAddrKind1::V6,
+        address: String::from("::1"),
+    };
+
+    println!("home:{:#?}, loopback:{:#?}", home, loopback)
+}
+
+// 第六章：定义枚举
+#[derive(Debug)]
+enum IpAddrKind3 {
+    V4(u8, u8, u8, u8),
+    V6(String),
+}
+
+#[derive(Debug)]
+enum IpAddrKind2 {
+    V4(String),
+    V6(String),
+}
+
+#[derive(Debug)]
+enum IpAddrKind1 {
+    V4,
+    V6,
+}
+
+#[derive(Debug)]
+struct IpAddr {
+    kind: IpAddrKind1,
+    address: String,
 }
 
 fn chapter5_2_2() {
