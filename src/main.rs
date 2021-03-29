@@ -1,3 +1,5 @@
+use std::collections::hash_map::Entry::Vacant;
+
 fn main() {
     // chapter3_1();
     // chapter3_2();
@@ -20,10 +22,67 @@ fn main() {
     // chapter5_2_1();
     // chapter5_2_2();
     // chapter5_2_3();
-    chapter6_1_1();
-    chapter6_1_2();
-    chapter6_1_3();
-    chapter6_1_4();
+
+    // chapter6_1_1();
+    // chapter6_1_2();
+    // chapter6_1_3();
+    // chapter6_1_4();
+
+    chapter6_1_5();
+
+    // match
+    chapter6_2_1();
+    chapter6_2_2();
+}
+
+fn chapter6_2_2() {
+    let five = Some(5);
+    println!("five plus one result: {:?}", plus_one(five));
+    let none_value = None;
+    println!("none value plus one result: {:?}", plus_one(none_value));
+}
+
+fn plus_one(x: Option<i32>) -> Option<i32> {
+    match x {
+        Some(i) => Some(i + 1),
+        None => None,
+        // default handler 机制.
+        _ => Some(-1),
+    }
+}
+
+fn chapter6_2_1() {
+    let nickel_result = value_in_cents(Coin::Nickel);
+    println!("nickel result: {}", nickel_result);
+}
+
+fn value_in_cents(coin: Coin) -> u32 {
+    match coin {
+        Coin::Penny => {
+            println!("penny");
+            1
+        }
+        Coin::Nickel => 5,
+        Coin::Dine => 10,
+        Coin::Quarter => 25,
+    }
+}
+
+enum Coin {
+    Penny,
+    Nickel,
+    Dine,
+    Quarter,
+}
+
+// option 的使用
+fn chapter6_1_5() {
+    let some_number = Some(5);
+    let some_string = Some("a string");
+    // None值必须加上类型
+    let none_value: Option<i32> = None;
+
+    // println!("some_number:{}, some_string:{}, none_value:{}", some_number, some_string, none_value);
 }
 
 fn chapter6_1_4() {
