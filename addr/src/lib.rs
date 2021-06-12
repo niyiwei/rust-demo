@@ -56,6 +56,10 @@ impl Guess {
             value
         }
     }
+
+    pub fn show_value(&self) {
+        println!("value:{}", self.value);
+    }
 }
 
 #[derive(Debug)]
