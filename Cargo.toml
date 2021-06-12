@@ -1,10 +1,10 @@
-[package]
-name = "hello-demo"
-version = "0.1.0"
-authors = ["panhaidong <240760715@qq.com>"]
-edition = "2018"
+[workspace]
 
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
-[dependencies]
+members = [
+    "addr",
+    "chapter10",
+    "chapter15",
+    "chapter16",
+    "chapter17",
+    "chapter18",
+]
