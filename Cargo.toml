@@ -8,4 +8,5 @@ members = [
     "chapter17",
     "chapter18",
     "chapter20",
+    "yew-app",
 ]
