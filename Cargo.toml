@@ -2,6 +2,7 @@
 
 members = [
     "addr",
+    "chapter-1",
     "chapter10",
     "chapter15",
     "chapter16",
