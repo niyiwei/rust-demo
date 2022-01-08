@@ -1,3 +1,5 @@
+use std::fmt::Formatter;
+
 fn main() {
     println!("Learning print");
 
@@ -29,6 +31,43 @@ fn main() {
     let person = Person { name: "abc", age: 85 };
     println!("person:{:?}", person);
     println!("person:{:#?}", person);
+
+
+    // 使用fmt::Display 定制打印
+    #[derive(Debug)]
+    struct Dog {
+        name: &'static str,
+        age: u8,
+    }
+
+    impl std::fmt::Display for Dog {
+        fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+            write!(f, "Dog name is:{}, age is:{}", self.name, self.age)
+        }
+    }
+
+    let dog = Dog { name: "aDai", age: 1 };
+    println!("Dog:{}", dog);
+
+    struct MyList(Vec<i32>);
+
+    impl std::fmt::Display for MyList {
+        fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+            let value = &self.0;
+
+            write!(f, "[")?;
+
+            for (count,v) in value.iter().enumerate() {
+                if count != 0 {
+                    write!(f, ", ")?;
+                }
+                write!(f, "{}", v)?
+            }
+
+            write!(f, "]")
+        }
+    }
+    println!("MyList:{}", MyList(vec![1, 2, 3, 4, 5]));
 }
 
 mod tests {}
