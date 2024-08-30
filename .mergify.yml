@@ -1,4 +1,23 @@
 pull_request_rules:
+  - name: Automatic merge
+    description: Automatic merge when CI passes and reviews approve
+    conditions:
+      - '#approved-reviews-by>=1'
+      - check-success=CI
+    actions:
+      merge:
+        method: squash
+  - name: Assign t-shirt size to PR
+    description: >-
+      Assign a t-shirt size label to a pull request based on the number of lines
+      changed.
+    conditions:
+      - '#modified-lines >= 100'
+      - '#modified-lines < 500'
+    actions:
+      label:
+        toggle:
+          - size/L
   - name: Request review from team
     description: Request review from a specific team when checks are green.
     conditions:
