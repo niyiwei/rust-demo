@@ -1,7 +1,12 @@
 pull_request_rules:
-  - name: Automatic merge
-    description: Merge when PR passes all branch protection and has label automerge
+  - name: Request review from team
+    description: Request review from a specific team when checks are green.
     conditions:
-      - label = automerge
+      - '-closed'
+      - '#approved-reviews-by=0'
+      - '#changes-requested-reviews-by=0'
+      - review-requested!=niyiwei
     actions:
-      merge: 
+      request_reviews:
+        users:
+          - niyiwei
